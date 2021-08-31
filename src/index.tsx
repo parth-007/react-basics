@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from "react-dom";
+import ClickCounter from "./classes/HOC/ClickCounter";
+import HoverCounter from "./classes/HOC/HoverCounter";
+import StudentInfoClass from "./classes/StudentInfoClass";
+import UserSearchClass from "./classes/UserSearchClass";
+import EventComponent from "./events/EventComponent";
+import Parent from "./props/Parent";
+import UserSearchRef from "./refs/UserSearch";
+import GuestList from "./state/GuestList";
+import StudentInfo from "./state/StudentInfo";
+import UserSearch from "./state/UserSearch";
+import { users } from "./constants";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const App = () => {
+  return (
+    <div>
+      <Parent />
+      <UserSearch />
+      <UserSearchRef />
+      <GuestList />
+      <UserSearch />
+      <UserSearchClass users={users} />
+      <EventComponent />
+      <StudentInfo id={10} name="Parth" />
+      <StudentInfoClass id={20} name="Rohan"/>
+      <HoverCounter name="Jay" />
+      <ClickCounter name="Rahul" />
+    </div>
+  );
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<App />, document.querySelector("#root"));
